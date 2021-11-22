@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon src/server",
-    "start": ""
+    "start": "node src/server"
   },
   "author": "Team Capdas",
   "license": "ISC",
