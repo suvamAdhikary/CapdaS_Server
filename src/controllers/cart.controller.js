@@ -4,6 +4,7 @@ const router = express.Router();
 
 const Cart = require('../models/cart.model');
 const User = require('../models/user.model');
+const Product = require('../models/product.model');
 
 const crudController = require('./crud.controller');
 
@@ -13,7 +14,7 @@ router.get('/:id', crudController.getOne(Cart));
 router.patch('/:id', crudController.updateOne(Cart));
 router.delete('/:id', crudController.deleteOne(Cart));
 
-router.get('/:userId', async (req, res) => {
+router.get('/final/:userId', async (req, res) => {
     try {
 
         const cart = await Cart.find({userId: req.params.userId}).lean().exec();
@@ -26,7 +27,7 @@ router.get('/:userId', async (req, res) => {
     }
 })
 
-router.patch('./:productId/:userId', async (req, res) => {
+router.patch('/update/:productId/:userId', async (req, res) => {
     try {
 
         const cart = await Cart.findOneAndUpdate({
@@ -37,6 +38,19 @@ router.patch('./:productId/:userId', async (req, res) => {
         }).lean().exec();
 
         return res.status(200).json({cart});
+
+    } catch (err) {
+        return res.status(400).send(err.message);
+    }
+})
+
+router.get('/check/:userId/:productId', async (req, res) => {
+    try {
+
+        const check = await Cart.findOne({$and: [{userId: req.params.userId}, {productId: req.params.productId}]}).lean().exec();
+
+
+        return res.status(200).json({check});
 
     } catch (err) {
         return res.status(400).send(err.message);

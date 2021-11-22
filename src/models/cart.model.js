@@ -9,6 +9,7 @@ const cartSchema = mongoose.Schema({
     info: {type: String, required: false},
     quantity: {type: Number, required: true},
     addedAt: {type: Date, default: Date.now},
+    image: {type: String, required: true},
 }, {
     versionKey: false,
     timestamp: true,

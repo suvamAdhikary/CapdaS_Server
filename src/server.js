@@ -6,7 +6,7 @@ const connect = require('./configs/db');
 
 require('dotenv').config();
 
-const { PORT } = process.env;
+// const { PORT } = process.env;
 
 // const corsOptions ={
 //     origin:`http://localhost:3000`, 
@@ -36,8 +36,8 @@ const { PORT } = process.env;
 //   res.json({msg: 'This is CORS-enabled for all origins!'})
 // })
 
-app.listen(PORT, async () => {
+app.listen(process.env.PORT || 6600, async () => {
     await connect();
 
-    console.log(`listening on port ${PORT}`);
+    console.log(`listening on port ${process.env.PORT || 6600}`);
 });

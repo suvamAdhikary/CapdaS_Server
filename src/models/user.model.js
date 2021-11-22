@@ -37,8 +37,8 @@ const userSchema = mongoose.Schema({
     username: reqStringF,
     password: reqStringF,
     mobile: reqNumberF,
-    totalItemsInBag: reqNumberF,
-    totalPrice: reqNumberF,
+    totalItemsInBag: {type: Number, required: true, default: 0},
+    totalPrice: {type: Number, required: true, default: 0},
     address: addressSchema,
     image: reqStringF,
 }, {
