@@ -33,7 +33,7 @@ const categoryController = require("./controllers/category.controller");
 const subCategoryController = require("./controllers/subCategory.controller");
 const cartController = require("./controllers/cart.controller");
 
-app.get("/test", (req, res) => {
+app.get("/", (req, res) => {
   return res.status(200).send("Heroku test success");
 })
 
