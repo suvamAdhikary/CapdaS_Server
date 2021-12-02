@@ -12,9 +12,9 @@ const User = require('../models/user.model');
 
 const {newToken} = require('../controllers/auth.controller');
 
-const { PORT, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
 
-const url = `http://localhost:${PORT}`;
+const url = `https://capdas.herokuapp.com/`;
 
 googlePassport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,

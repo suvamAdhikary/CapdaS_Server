@@ -14,7 +14,7 @@ const {newToken} = require('../controllers/auth.controller');
 
 const { PORT, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET } = process.env;
 
-const url = `http://localhost:${PORT}`;
+const url = 'https://capdas.herokuapp.com/';
 
 fbPassport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
