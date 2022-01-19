@@ -1,41 +1,41 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
-require('dotenv').config();
+// require('dotenv').config();
 
-const { JWT_SECRET_KEY } = process.env;
+// const { JWT_SECRET_KEY } = process.env;
 
-function verifyToken(token) {
-    return new Promise(function(resolve, reject) {
-        jwt.verify(token, JWT_SECRET_KEY, function(err, user) {
-            if(err) return reject(err);
+// function verifyToken(token) {
+//     return new Promise(function(resolve, reject) {
+//         jwt.verify(token, JWT_SECRET_KEY, function(err, user) {
+//             if(err) return reject(err);
 
-            return resolve(user);
-        })
-    })
-}
+//             return resolve(user);
+//         })
+//     })
+// }
 
-async function authenticate (req, res, next) {
-    const bearerToken = req.headers.authorization;
+// async function authenticate (req, res, next) {
+//     const bearerToken = req.headers.authorization;
 
-    if(! bearerToken || ! bearerToken.strtsWith('Bearer ')) return res.status(400)
-                                                                        .json({
-                                                                            message: 'Please provide a bearer token'
-                                                                        });
+//     if(! bearerToken || ! bearerToken.strtsWith('Bearer ')) return res.status(400)
+//                                                                         .json({
+//                                                                             message: 'Please provide a bearer token'
+//                                                                         });
     
-    const token = bearerToken.split(" ")[1].trim();
+//     const token = bearerToken.split(" ")[1].trim();
 
-    try {
-        const {user} = await verifyToken(token);
+//     try {
+//         const {user} = await verifyToken(token);
 
-        req.user = user;
+//         req.user = user;
 
-        return next();
-    } catch (err) {
-        return res.status(400)
-                    .json({
-                        message: 'Please provide a valid bearer token'
-                    });
-    };
-};
+//         return next();
+//     } catch (err) {
+//         return res.status(400)
+//                     .json({
+//                         message: 'Please provide a valid bearer token'
+//                     });
+//     };
+// };
 
-module.exports = authenticate;
+// module.exports = authenticate;

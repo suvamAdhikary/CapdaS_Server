@@ -36,8 +36,8 @@ const connect = require('./configs/db');
 //   res.json({msg: 'This is CORS-enabled for all origins!'})
 // })
 
-app.listen(process.env.PORT || 6600, async () => {
+app.listen(process.env.PORT || 5000, async () => {
     await connect();
 
-    console.log(`listening on port ${process.env.PORT || 6600}`);
+    console.log(`listening on port ${process.env.PORT || 5000}`);
 });
